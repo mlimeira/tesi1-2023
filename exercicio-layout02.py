@@ -3,7 +3,7 @@ import tkinter as tk
 janela = tk.Tk()
 frame = tk.Frame(janela)
 frame.pack()
-
+#piramide
 btn1 = tk.Button(frame, text='1')
 btn1.grid(row=0, column=1)
 btn2 = tk.Button(frame, text='2')
