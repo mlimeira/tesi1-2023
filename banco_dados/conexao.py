@@ -9,11 +9,12 @@ def conecta():
     except Error as er:
         print('Erro durante a conexão.')
 
-sql_criar_tabela = '''CREATE TABLE cliente(
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-nome VARCHAR(100) NOT NULL,
-cpf VARCHAR(11) NOT NULL,
-email VARCHAR(60) NOT NULL
+sql_criar_tabela = '''CREATE TABLE "conta" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"numero"	INTEGER NOT NULL,
+	"saldo"	REAL NOT NULL,
+	"id_cliente"	INTEGER NOT NULL,
+	FOREIGN KEY("id_cliente") REFERENCES "cliente"("id")
 );'''
 def criar_tabela(sql):
     con = conecta()
@@ -53,11 +54,11 @@ def atualizar(sql):
 
 sql_remover = f'DELETE FROM cliente WHERE id=4;'
 def remover(sql):
-    con = conecta()
-    cursor = con.cursor()
-    cursor.execute(sql)
-    con.commit()
-    con.close()
+        con = conecta()
+        cursor = con.cursor()
+        cursor.execute(sql)
+        con.commit()
+        con.close()
 
 #criar_tabela(sql_criar_tabela)
 #inserir(sql_inserir_cliente)
