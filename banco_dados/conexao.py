@@ -9,7 +9,15 @@ def conecta():
     except Error as er:
         print('Erro durante a conexão.')
 
-sql_criar_tabela = '''CREATE TABLE "conta" (
+sql_criar_tabela = '''CREATE TABLE IF NOT EXISTS "cliente" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"nome"	VARCHAR(100) NOT NULL,
+	"cpf"	VARCHAR(11) NOT NULL,
+	"email"	VARCHAR(60) NOT NULL
+);'''
+
+sql_criar_conta = '''
+CREATE TABLE IF NOT EXISTS "conta" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	"numero"	INTEGER NOT NULL,
 	"saldo"	REAL NOT NULL,
@@ -66,3 +74,5 @@ def remover(sql):
 #remover(sql_remover)
 #mostrar_tabela(sql_mostra_cliente)
 #listar(sql_mostra_cliente)
+criar_tabela(sql_criar_tabela)
+criar_tabela(sql_criar_conta)
